@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning call — Integrity</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --bg: #F7F6F2;
+    --card: #FFFFFF;
+    --border: #E4E2DA;
+    --text-primary: #1F1E1B;
+    --text-secondary: #6B6A63;
+    --text-muted: #9B9A93;
+    --accent: #185FA5;
+    --danger: #A32D2D;
+    --success: #3B6D11;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 32px 16px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+  .header h1 { font-size: 20px; font-weight: 600; margin: 0; }
+  .header .sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+  .header .updated { font-size: 13px; color: var(--text-muted); }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .metric-card .label { font-size: 13px; color: var(--text-secondary); margin: 0 0 4px; }
+  .metric-card .value { font-size: 22px; font-weight: 600; margin: 0; }
+  .metric-card .delta { font-size: 12px; margin: 4px 0 0; }
+  .delta.up { color: var(--danger); }
+  .delta.down { color: var(--success); }
+  .delta.flat { color: var(--text-muted); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .category-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 0 0 10px; display: flex; align-items: center; gap: 6px; }
+  .news-list { border-top: 1px solid var(--border); }
+  .news-item { display: block; padding: 10px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item .title { font-size: 14px; margin: 0; color: var(--accent); }
+  .news-item .source { font-size: 12px; color: var(--text-muted); margin: 4px 0 0; }
+  .empty { font-size: 13px; color: var(--text-muted); padding: 10px 0; }
+  .news-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .news-row:last-child { border-bottom: none; }
+  .news-row .news-item { padding: 0; border-bottom: none; flex: 1; }
+  .vote-group { display: flex; gap: 4px; flex-shrink: 0; }
+  .vote-btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); font-size: 14px; }
+  .vote-btn:hover { background: var(--bg); }
+  .vote-btn.voted-like { color: var(--success); border-color: var(--success); }
+  .vote-btn.voted-dislike { color: var(--danger); border-color: var(--danger); }
+  .vote-btn:disabled { cursor: default; opacity: 0.6; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div>
+      <h1>Morning call — Integrity</h1>
+      <p class="sub">{{ formatted_date }}</p>
+    </div>
+    <div class="updated">atualizado às {{ formatted_time }}</div>
+  </div>
+
+  <div class="metrics">
+    {% for label, m in market.items() %}
+    <div class="metric-card">
+      <p class="label">{{ label }}</p>
+      <p class="value">{{ m.display_value }}</p>
+      {% if m.change_pct is not none %}
+        <p class="delta {{ 'up' if m.change_pct > 0 else ('down' if m.change_pct < 0 else 'flat') }}">
+          {{ '%+.2f' % m.change_pct }}%
+        </p>
+      {% else %}
+        <p class="delta flat">sem variação disponível</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="grid">
+    {% for key, title, icon, _qty in categories %}
+    <div>
+      <p class="category-title"><i class="ti {{ icon }}"></i>{{ title }}</p>
+      <div class="news-list">
+        {% for item in news.get(key, []) %}
+        <div class="news-row">
+          <a class="news-item" href="{{ item.link }}" target="_blank" rel="noopener">
+            <p class="title">{{ item.title }}</p>
+            <p class="source">{{ item.source }}</p>
+          </a>
+          <div class="vote-group">
+            <button class="vote-btn" data-id="{{ item.id }}" data-title="{{ item.title }}" data-source="{{ item.source }}" data-category="{{ key }}" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
+              <i class="ti ti-thumb-up" aria-hidden="true"></i>
+            </button>
+            <button class="vote-btn" data-id="{{ item.id }}" data-title="{{ item.title }}" data-source="{{ item.source }}" data-category="{{ key }}" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
+              <i class="ti ti-thumb-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        {% else %}
+        <p class="empty">sem notícias relevantes hoje</p>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script>
+  const FEEDBACK_URL = "{{ feedback_webapp_url }}";
+
+  function registerVote(btn) {
+    if (!FEEDBACK_URL) {
+      console.warn("FEEDBACK_WEBAPP_URL não configurada -- voto não será salvo.");
+    } else {
+      const params = new URLSearchParams({
+        id: btn.dataset.id,
+        vote: btn.dataset.vote,
+        title: btn.dataset.title,
+        source: btn.dataset.source,
+        category: btn.dataset.category
+      });
+      fetch(FEEDBACK_URL + "?" + params.toString(), { mode: "no-cors" });
+    }
+
+    const group = btn.parentElement;
+    group.querySelectorAll(".vote-btn").forEach(b => {
+      b.disabled = true;
+      b.classList.remove("voted-like", "voted-dislike");
+    });
+    btn.classList.add(btn.dataset.vote === "like" ? "voted-like" : "voted-dislike");
+  }
+</script>
+</body>
+</html>
