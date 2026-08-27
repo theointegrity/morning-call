@@ -46,8 +46,11 @@ def fetch_market_data() -> dict:
     for label, ticker in MARKET_TICKERS.items():
         try:
             t = yf.Ticker(ticker)
-            hist = t.history(period="2d")
+            hist = t.history(period="5d")
             if len(hist) < 2:
+                print(f"[aviso] {label} ({ticker}): histórico insuficiente "
+                      f"({len(hist)} dia(s) retornado(s)) -- ticker pode estar "
+                      f"errado, deslistado, ou sem negociação recente")
                 continue
             prev_close = hist["Close"].iloc[-2]
             last = hist["Close"].iloc[-1]
@@ -58,8 +61,8 @@ def fetch_market_data() -> dict:
 
     # Selic não vem do Yahoo Finance -- puxa direto da API do Banco Central
     data["Selic"] = fetch_selic()
-    # DI29 não tem API gratuita -- usamos o Tesouro Prefixado 2029 como proxy
-    data["Tesouro Prefixado 2029"] = fetch_tesouro_prefixado_2029()
+    # DI29 não tem API gratuita -- usamos a Selic esperada 2029 (Focus/BCB)
+    data["Selic esperada 2029 (Focus)"] = fetch_selic_esperada_2029()
     return data
 
 
@@ -76,36 +79,38 @@ def fetch_selic() -> dict:
         return {"value": None, "change_pct": None}
 
 
-def fetch_tesouro_prefixado_2029() -> dict:
+def fetch_selic_esperada_2029() -> dict:
     """
-    Busca a taxa do Tesouro Prefixado 2029 (LTN 2029) via API pública do
-    Tesouro Direto. Usada como proxy gratuito da curva de juros DI29, já
-    que não existe API gratuita/barata para o contrato futuro de DI em si
-    (ver conversa/README para mais contexto sobre essa limitação).
+    Busca a expectativa de mercado (pesquisa Focus, Banco Central) para a
+    Selic no fim de 2029 -- usada como referência de juros de longo prazo,
+    já que não existe fonte gratuita e estável para a curva DI/Tesouro
+    (ver README/histórico de conversa para mais contexto).
+
+    IMPORTANTE: isso é uma EXPECTATIVA/pesquisa de opinião entre
+    economistas (mediana Focus), não um preço de mercado negociado --
+    por isso o rótulo no dashboard deixa isso explícito ("Focus").
     """
     import requests
 
-    url = "https://www.tesourodireto.com.br/json/br/com/b3/tesourodireto/service/api/treasurybondsinfo.json"
+    url = (
+        "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/"
+        "ExpectativasMercadoAnuais"
+        "?$top=1"
+        "&$filter=Indicador%20eq%20'Selic'%20and%20DataReferencia%20eq%20'2029'"
+        "&$orderby=Data%20desc"
+        "&$format=json"
+    )
     try:
         resp = requests.get(url, timeout=10)
         resp.raise_for_status()
-        data = resp.json()
-        bonds = data.get("response", {}).get("TrsrBdTradgList", [])
-
-        for b in bonds:
-            info = b.get("TrsrBd", {})
-            name = info.get("nm", "") or info.get("name", "")
-            # Queremos o prefixado "simples" de 2029, não o com juros semestrais
-            if "Prefixado" in name and "2029" in name and "Juros" not in name:
-                rate = info.get("anulInvstmtRate") or info.get("investmentRate")
-                if rate is not None:
-                    return {"value": float(rate), "change_pct": None}
-
-        print("[aviso] Tesouro Prefixado 2029 não encontrado na resposta da API "
-              "(pode ter vencido ou o nome mudou -- confira o JSON manualmente)")
-        return {"value": None, "change_pct": None}
+        values = resp.json().get("value", [])
+        if not values:
+            print("[aviso] Selic esperada 2029 (Focus) não retornou nenhum dado")
+            return {"value": None, "change_pct": None}
+        mediana = values[0].get("Mediana")
+        return {"value": float(mediana), "change_pct": None}
     except Exception as e:
-        print(f"[aviso] falha ao buscar Tesouro Prefixado 2029: {e}")
+        print(f"[aviso] falha ao buscar Selic esperada 2029 (Focus): {e}")
         return {"value": None, "change_pct": None}
 
 

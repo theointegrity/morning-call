@@ -38,6 +38,8 @@ def _format_market(market_raw: dict) -> dict:
             display = f"R$ {value:.2f}"
         elif label == "Tesouro Prefixado 2029":
             display = f"{value:.2f}% a.a."
+        elif label == "Selic esperada 2029 (Focus)":
+            display = f"{value:.2f}%"
         else:
             display = str(value)
         formatted[label] = {"display_value": display, "change_pct": m.get("change_pct")}
