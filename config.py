@@ -58,6 +58,7 @@ RSS_FEEDS = [
     {"name": "Money Times", "url": "https://www.moneytimes.com.br/feed/"},
     {"name": "Suno Notícias", "url": "https://www.suno.com.br/noticias/feed/"},
     {"name": "Cointelegraph Brasil", "url": "https://cointelegraph.com.br/rss"},
+    {"name": "Poder360", "url": "https://www.poder360.com.br/feed/"},
 ]
 
 # --- Indicadores de mercado (tickers Yahoo Finance) ---

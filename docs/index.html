@@ -77,6 +77,13 @@
 
   .footer { max-width: 1000px; margin: 0 auto; padding: 0 24px 32px; text-align: center; }
   .footer p { font-size: 11px; color: var(--text-muted); }
+
+  .agenda-block { background: var(--navy); border-radius: 4px; padding: 16px 20px; margin-bottom: 24px; }
+  .agenda-title { font-family: Georgia, "Times New Roman", serif; font-size: 13px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px; }
+  .agenda-list { display: flex; flex-wrap: wrap; gap: 20px; }
+  .agenda-item { display: flex; align-items: baseline; gap: 8px; }
+  .agenda-item .agenda-date { font-weight: 700; color: #FFFFFF; font-size: 14px; }
+  .agenda-item .agenda-label { font-size: 13px; color: rgba(255,255,255,0.8); }
 </style>
 </head>
 <body>
@@ -89,12 +96,36 @@
     </div>
     <div>
       <p class="sub">Quinta-feira, 27 de agosto de 2026</p>
-      <p class="updated">atualizado às 13:13</p>
+      <p class="updated">atualizado às 14:14</p>
     </div>
   </div>
 </div>
 
 <div class="container">
+
+  
+  <div class="agenda-block">
+    <p class="agenda-title">Agenda — próximos eventos</p>
+    <div class="agenda-list">
+      
+      <div class="agenda-item">
+        <span class="agenda-date">16/09</span>
+        <span class="agenda-label">Decisão do Copom (Selic)</span>
+      </div>
+      
+      <div class="agenda-item">
+        <span class="agenda-date">16/09</span>
+        <span class="agenda-label">Decisão do FOMC (juros dos EUA)</span>
+      </div>
+      
+      <div class="agenda-item">
+        <span class="agenda-date">28/10</span>
+        <span class="agenda-label">Decisão do FOMC (juros dos EUA)</span>
+      </div>
+      
+    </div>
+  </div>
+  
 
   <div class="metrics">
     
@@ -103,27 +134,27 @@
       <p class="value">5.17</p>
       
         <p class="delta up">
-          +0.49%
+          +0.45%
         </p>
       
     </div>
     
     <div class="metric-card">
       <p class="label">Ibovespa</p>
-      <p class="value">174.829</p>
+      <p class="value">175.090</p>
       
         <p class="delta up">
-          +0.14%
+          +0.29%
         </p>
       
     </div>
     
     <div class="metric-card">
       <p class="label">Petróleo (Brent)</p>
-      <p class="value">US$ 87.61</p>
+      <p class="value">US$ 87.67</p>
       
         <p class="delta down">
-          -0.26%
+          -0.19%
         </p>
       
     </div>
@@ -145,24 +176,24 @@
       <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.infomoney.com.br/economia/hammack-reitera-a-cnbc-que-e-hora-de-o-fed-aumentar-os-juros/" target="_blank" rel="noopener">
-            <p class="title">Hammack reitera à CNBC que é hora de o Fed aumentar os juros</p>
-            <p class="source">InfoMoney</p>
+          <a class="news-item" href="https://br.investing.com/news/stock-market-news/ate-onde-os-juros-podem-subir-antes-de-prejudicar-as-acoes-2051505" target="_blank" rel="noopener">
+            <p class="title">Até onde os juros podem subir antes de prejudicar as ações?</p>
+            <p class="source">Investing.com Brasil</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ed265dd928f5&vote=like&title=Hammack%20reitera%20%C3%A0%20CNBC%20que%20%C3%A9%20hora%20de%20o%20Fed%20aumentar%20os%20juros&source=InfoMoney&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ed265dd928f5&vote=dislike&title=Hammack%20reitera%20%C3%A0%20CNBC%20que%20%C3%A9%20hora%20de%20o%20Fed%20aumentar%20os%20juros&source=InfoMoney&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f250f233e475&vote=like&title=At%C3%A9%20onde%20os%20juros%20podem%20subir%20antes%20de%20prejudicar%20as%20a%C3%A7%C3%B5es%3F&source=Investing.com%20Brasil&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f250f233e475&vote=dislike&title=At%C3%A9%20onde%20os%20juros%20podem%20subir%20antes%20de%20prejudicar%20as%20a%C3%A7%C3%B5es%3F&source=Investing.com%20Brasil&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.suno.com.br/noticias/ibovespa-hoje-26-agosto-2026-ipca15-pce-mt/" target="_blank" rel="noopener">
-            <p class="title">Ibovespa fica no zero a zero aos 174 mil pontos com inflação no Brasil e nos EUA</p>
-            <p class="source">Suno Notícias</p>
+          <a class="news-item" href="https://www.moneytimes.com.br/europa-27-8-26-apsa/" target="_blank" rel="noopener">
+            <p class="title">Bolsas da Europa recuam após ata do BCE; Frankfurt sobe</p>
+            <p class="source">Money Times</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=34bd2c4ded36&vote=like&title=Ibovespa%20fica%20no%20zero%20a%20zero%20aos%20174%20mil%20pontos%20com%20infla%C3%A7%C3%A3o%20no%20Brasil%20e%20nos%20EUA&source=Suno%20Not%C3%ADcias&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=34bd2c4ded36&vote=dislike&title=Ibovespa%20fica%20no%20zero%20a%20zero%20aos%20174%20mil%20pontos%20com%20infla%C3%A7%C3%A3o%20no%20Brasil%20e%20nos%20EUA&source=Suno%20Not%C3%ADcias&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35bc3f768c69&vote=like&title=Bolsas%20da%20Europa%20recuam%20ap%C3%B3s%20ata%20do%20BCE%3B%20Frankfurt%20sobe&source=Money%20Times&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35bc3f768c69&vote=dislike&title=Bolsas%20da%20Europa%20recuam%20ap%C3%B3s%20ata%20do%20BCE%3B%20Frankfurt%20sobe&source=Money%20Times&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
@@ -174,24 +205,24 @@
       <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.infomoney.com.br/mercados/ibovespa-abertura-fechamento-27082026/" target="_blank" rel="noopener">
-            <p class="title">Ibovespa recua na contramão do exterior, após sequência positiva</p>
+          <a class="news-item" href="https://www.infomoney.com.br/mercados/operadores-ampliam-aposta-em-acoes-do-brasil-conforme-cai-vantagem-de-lula-na-eleicao/" target="_blank" rel="noopener">
+            <p class="title">Operadores ampliam aposta em ações do Brasil conforme cai vantagem de Lula na eleição</p>
             <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fd38fb0ab890&vote=like&title=Ibovespa%20recua%20na%20contram%C3%A3o%20do%20exterior%2C%20ap%C3%B3s%20sequ%C3%AAncia%20positiva&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fd38fb0ab890&vote=dislike&title=Ibovespa%20recua%20na%20contram%C3%A3o%20do%20exterior%2C%20ap%C3%B3s%20sequ%C3%AAncia%20positiva&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=5fe4ab8daf51&vote=like&title=Operadores%20ampliam%20aposta%20em%20a%C3%A7%C3%B5es%20do%20Brasil%20conforme%20cai%20vantagem%20de%20Lula%20na%20elei%C3%A7%C3%A3o&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=5fe4ab8daf51&vote=dislike&title=Operadores%20ampliam%20aposta%20em%20a%C3%A7%C3%B5es%20do%20Brasil%20conforme%20cai%20vantagem%20de%20Lula%20na%20elei%C3%A7%C3%A3o&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://br.investing.com/news/stock-market-news/petrobras-ve-potencial-para-exportar-gas-liquefeito-do-presal-diz-ceo-2051463" target="_blank" rel="noopener">
-            <p class="title">Petrobras vê potencial para exportar gás liquefeito do pré-sal, diz CEO</p>
-            <p class="source">Investing.com Brasil</p>
+          <a class="news-item" href="https://www.infomoney.com.br/mercados/ibovespa-abertura-fechamento-27082026/" target="_blank" rel="noopener">
+            <p class="title">Ibovespa vira para alta com blue chips, acompanhando NY</p>
+            <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=70b012ab083f&vote=like&title=Petrobras%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Investing.com%20Brasil&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=70b012ab083f&vote=dislike&title=Petrobras%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Investing.com%20Brasil&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b0d0c11aecd6&vote=like&title=Ibovespa%20vira%20para%20alta%20com%20blue%20chips%2C%20acompanhando%20NY&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b0d0c11aecd6&vote=dislike&title=Ibovespa%20vira%20para%20alta%20com%20blue%20chips%2C%20acompanhando%20NY&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
@@ -217,23 +248,23 @@
           </div>
         </div>
         
+        <div class="news-row">
+          <a class="news-item" href="https://www.suno.com.br/noticias/balanco-da-salesforce-ssfo34-lucro-inteligencia-artificial-mt/" target="_blank" rel="noopener">
+            <p class="title">Salesforce (SSFO34) dobra lucro e ação dispara 11% com reforço da IA</p>
+            <p class="source">Suno Notícias</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=d3bfba50fdca&vote=like&title=Salesforce%20%28SSFO34%29%20dobra%20lucro%20e%20a%C3%A7%C3%A3o%20dispara%2011%25%20com%20refor%C3%A7o%20da%20IA&source=Suno%20Not%C3%ADcias&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=d3bfba50fdca&vote=dislike&title=Salesforce%20%28SSFO34%29%20dobra%20lucro%20e%20a%C3%A7%C3%A3o%20dispara%2011%25%20com%20refor%C3%A7o%20da%20IA&source=Suno%20Not%C3%ADcias&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
       </div>
     </div>
     
     <div class="category-block">
       <p class="category-title"><i class="ti ti-droplet"></i>Commodities</p>
       <div>
-        
-        <div class="news-row">
-          <a class="news-item" href="https://br.investing.com/news/commodities-news/deral-ve-leve-alta-na-area-de-soja-do-parana-em-2627-e-aumento-de-4-na-safra-2051462" target="_blank" rel="noopener">
-            <p class="title">Deral vê leve alta na área de soja do Paraná em 26/27 e aumento de 4% na safra</p>
-            <p class="source">Investing.com Brasil</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3f040eac0cbb&vote=like&title=Deral%20v%C3%AA%20leve%20alta%20na%20%C3%A1rea%20de%20soja%20do%20Paran%C3%A1%20em%2026/27%20e%20aumento%20de%204%25%20na%20safra&source=Investing.com%20Brasil&category=commodities" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3f040eac0cbb&vote=dislike&title=Deral%20v%C3%AA%20leve%20alta%20na%20%C3%A1rea%20de%20soja%20do%20Paran%C3%A1%20em%2026/27%20e%20aumento%20de%204%25%20na%20safra&source=Investing.com%20Brasil&category=commodities" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
         
         <div class="news-row">
           <a class="news-item" href="https://cointelegraph.com.br/news/bitfinex-securities-record-50-million-tokenized-nickel-project?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
@@ -252,6 +283,39 @@
     <div class="category-block">
       <p class="category-title"><i class="ti ti-currency-bitcoin"></i>Cripto</p>
       <div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.moneytimes.com.br/bitcoin-btc-vive-semana-de-ouro-alta-de-quase-25-coloca-desempenho-da-criptomoeda-entre-os-1-melhores-resultados-desde-2020-rens/" target="_blank" rel="noopener">
+            <p class="title">Bitcoin (BTC) vive ‘semana de ouro’: Alta de quase 25% coloca desempenho da criptomoeda entre os 1% melhores resultados desde 2020, diz Binance Research</p>
+            <p class="source">Money Times</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=1752db51371b&vote=like&title=Bitcoin%20%28BTC%29%20vive%20%E2%80%98semana%20de%20ouro%E2%80%99%3A%20Alta%20de%20quase%2025%25%20coloca%20desempenho%20da%20criptomoeda%20entre%20os%201%25%20melhores%20resultados%20desde%202020%2C%20diz%20Binance%20Research&source=Money%20Times&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=1752db51371b&vote=dislike&title=Bitcoin%20%28BTC%29%20vive%20%E2%80%98semana%20de%20ouro%E2%80%99%3A%20Alta%20de%20quase%2025%25%20coloca%20desempenho%20da%20criptomoeda%20entre%20os%201%25%20melhores%20resultados%20desde%202020%2C%20diz%20Binance%20Research&source=Money%20Times&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/news/charles-schwab-to-add-solana-avalanche-and-chainlink-to-crypto-platform?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Charles Schwab adiciona Solana, Avalanche e Chainlink à sua plataforma de cripto nascente</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f2c45494265f&vote=like&title=Charles%20Schwab%20adiciona%20Solana%2C%20Avalanche%20e%20Chainlink%20%C3%A0%20sua%20plataforma%20de%20cripto%20nascente&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f2c45494265f&vote=dislike&title=Charles%20Schwab%20adiciona%20Solana%2C%20Avalanche%20e%20Chainlink%20%C3%A0%20sua%20plataforma%20de%20cripto%20nascente&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/markets/bitcoin-miner-stocks-rally-crypto-demand-ai-hpc?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Alta de 23% do Bitcoin faz mineradoras castigadas dispararem além das ações de IA</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f4067bc35fd8&vote=like&title=Alta%20de%2023%25%20do%20Bitcoin%20faz%20mineradoras%20castigadas%20dispararem%20al%C3%A9m%20das%20a%C3%A7%C3%B5es%20de%20IA&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=f4067bc35fd8&vote=dislike&title=Alta%20de%2023%25%20do%20Bitcoin%20faz%20mineradoras%20castigadas%20dispararem%20al%C3%A9m%20das%20a%C3%A7%C3%B5es%20de%20IA&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
         
         <div class="news-row">
           <a class="news-item" href="https://cointelegraph.com.br/news/uk-government-crypto-millionaires-2025?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
@@ -275,39 +339,6 @@
           </div>
         </div>
         
-        <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">Veja o que aconteceu hoje no mundo cripto</p>
-            <p class="source">Cointelegraph Brasil</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=032ad1ab8ad0&vote=like&title=Veja%20o%20que%20aconteceu%20hoje%20no%20mundo%20cripto&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=032ad1ab8ad0&vote=dislike&title=Veja%20o%20que%20aconteceu%20hoje%20no%20mundo%20cripto&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
-        
-        <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/news/bithumb-wins-suits-mistakenly-credited-bitcoin?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">Bithumb vence 2 processos por créditos equivocados de Bitcoin: relatório</p>
-            <p class="source">Cointelegraph Brasil</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=6dc18f91ce1a&vote=like&title=Bithumb%20vence%202%20processos%20por%20cr%C3%A9ditos%20equivocados%20de%20Bitcoin%3A%20relat%C3%B3rio&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=6dc18f91ce1a&vote=dislike&title=Bithumb%20vence%202%20processos%20por%20cr%C3%A9ditos%20equivocados%20de%20Bitcoin%3A%20relat%C3%B3rio&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
-        
-        <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/markets/bitcoin-etf-inflows-slow-232-million-btc-under-80k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">Entradas em ETFs de Bitcoin desaceleram para US$ 232 milhões enquanto o BTC permanece abaixo de US$ 80 mil</p>
-            <p class="source">Cointelegraph Brasil</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a3b179ebcdaa&vote=like&title=Entradas%20em%20ETFs%20de%20Bitcoin%20desaceleram%20para%20US%24%20232%20milh%C3%B5es%20enquanto%20o%20BTC%20permanece%20abaixo%20de%20US%24%2080%20mil&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a3b179ebcdaa&vote=dislike&title=Entradas%20em%20ETFs%20de%20Bitcoin%20desaceleram%20para%20US%24%20232%20milh%C3%B5es%20enquanto%20o%20BTC%20permanece%20abaixo%20de%20US%24%2080%20mil&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
-        
       </div>
     </div>
     
@@ -316,59 +347,68 @@
       <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.infomoney.com.br/mundo/investigacao-dos-eua-mira-rota-clandestina-de-chips-nvidia-para-a-china/" target="_blank" rel="noopener">
-            <p class="title">Investigação dos EUA mira rota clandestina de chips Nvidia para a China</p>
+          <a class="news-item" href="https://www.infomoney.com.br/mundo/paquistao-desafia-pressao-dos-eua-e-diz-que-mantera-comercio-com-o-ira/" target="_blank" rel="noopener">
+            <p class="title">Paquistão desafia pressão dos EUA e diz que manterá comércio com o Irã</p>
             <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=bf1cb43b65b5&vote=like&title=Investiga%C3%A7%C3%A3o%20dos%20EUA%20mira%20rota%20clandestina%20de%20chips%20Nvidia%20para%20a%20China&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=bf1cb43b65b5&vote=dislike&title=Investiga%C3%A7%C3%A3o%20dos%20EUA%20mira%20rota%20clandestina%20de%20chips%20Nvidia%20para%20a%20China&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
-        
-        <div class="news-row">
-          <a class="news-item" href="https://www.infomoney.com.br/politica/lucro-industrial-da-china-sobe-112-na-comparacao-anual-de-julho/" target="_blank" rel="noopener">
-            <p class="title">Lucro industrial da China sobe 11,2% na comparação anual de julho</p>
-            <p class="source">InfoMoney</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=04dc4d9e067d&vote=like&title=Lucro%20industrial%20da%20China%20sobe%2011%2C2%25%20na%20compara%C3%A7%C3%A3o%20anual%20de%20julho&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=04dc4d9e067d&vote=dislike&title=Lucro%20industrial%20da%20China%20sobe%2011%2C2%25%20na%20compara%C3%A7%C3%A3o%20anual%20de%20julho&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3e539b297b2d&vote=like&title=Paquist%C3%A3o%20desafia%20press%C3%A3o%20dos%20EUA%20e%20diz%20que%20manter%C3%A1%20com%C3%A9rcio%20com%20o%20Ir%C3%A3&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3e539b297b2d&vote=dislike&title=Paquist%C3%A3o%20desafia%20press%C3%A3o%20dos%20EUA%20e%20diz%20que%20manter%C3%A1%20com%C3%A9rcio%20com%20o%20Ir%C3%A3&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
           <a class="news-item" href="https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-27082026/" target="_blank" rel="noopener">
-            <p class="title">Ibovespa Hoje Ao Vivo: Bolsa passa a oscilar e ronda os 174 mil pontos</p>
+            <p class="title">Ibovespa Hoje Ao Vivo: Bolsa passa a oscilar e ronda os 175 mil pontos</p>
             <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35b6034ddee8&vote=like&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20174%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35b6034ddee8&vote=dislike&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20174%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ddfed5967330&vote=like&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20175%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ddfed5967330&vote=dislike&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20175%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://br.investing.com/news/economy-news/citrini-research-preve-rali-nos-titulos-com-mudanca-na-politica-do-fed-2051461" target="_blank" rel="noopener">
-            <p class="title">Citrini Research prevê rali nos títulos com mudança na política do Fed</p>
-            <p class="source">Investing.com Brasil</p>
-          </a>
-          <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b2ce5cf25b43&vote=like&title=Citrini%20Research%20prev%C3%AA%20rali%20nos%20t%C3%ADtulos%20com%20mudan%C3%A7a%20na%20pol%C3%ADtica%20do%20Fed&source=Investing.com%20Brasil&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b2ce5cf25b43&vote=dislike&title=Citrini%20Research%20prev%C3%AA%20rali%20nos%20t%C3%ADtulos%20com%20mudan%C3%A7a%20na%20pol%C3%ADtica%20do%20Fed&source=Investing.com%20Brasil&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
-          </div>
-        </div>
-        
-        <div class="news-row">
-          <a class="news-item" href="https://www.moneytimes.com.br/trump-assina-proclamacao-para-ampliar-temporariamente-importacao-de-carne-bovina-magra-pads/" target="_blank" rel="noopener">
-            <p class="title">Trump assina proclamação para ampliar temporariamente importação de carne bovina magra</p>
+          <a class="news-item" href="https://www.moneytimes.com.br/jeff-bezos-dono-da-amazon-nao-consegue-lugar-no-clube-bunker-dos-bilionarios-isca/" target="_blank" rel="noopener">
+            <p class="title">Nem os US$ 250 bilhões do dono da Amazon garantem vaga no ‘clube dos bilionários’</p>
             <p class="source">Money Times</p>
           </a>
           <div class="vote-group">
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=98b328f09f0b&vote=like&title=Trump%20assina%20proclama%C3%A7%C3%A3o%20para%20ampliar%20temporariamente%20importa%C3%A7%C3%A3o%20de%20carne%20bovina%20magra&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
-            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=98b328f09f0b&vote=dislike&title=Trump%20assina%20proclama%C3%A7%C3%A3o%20para%20ampliar%20temporariamente%20importa%C3%A7%C3%A3o%20de%20carne%20bovina%20magra&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=e298c8c61f71&vote=like&title=Nem%20os%20US%24%20250%20bilh%C3%B5es%20do%20dono%20da%20Amazon%20garantem%20vaga%20no%20%E2%80%98clube%20dos%20bilion%C3%A1rios%E2%80%99&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=e298c8c61f71&vote=dislike&title=Nem%20os%20US%24%20250%20bilh%C3%B5es%20do%20dono%20da%20Amazon%20garantem%20vaga%20no%20%E2%80%98clube%20dos%20bilion%C3%A1rios%E2%80%99&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/news/uk-boe-innovation-mandate-stablecoins?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Banco da Inglaterra se prepara para novo mandato de inovação abrangendo stablecoins</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a42af2de8098&vote=like&title=Banco%20da%20Inglaterra%20se%20prepara%20para%20novo%20mandato%20de%20inova%C3%A7%C3%A3o%20abrangendo%20stablecoins&source=Cointelegraph%20Brasil&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a42af2de8098&vote=dislike&title=Banco%20da%20Inglaterra%20se%20prepara%20para%20novo%20mandato%20de%20inova%C3%A7%C3%A3o%20abrangendo%20stablecoins&source=Cointelegraph%20Brasil&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/news/tokenized-deposits-us-credit-costs-dallas-fed-economists?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Depósitos tokenizados podem elevar custos de crédito nos EUA, dizem economistas do Fed de Dallas</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=080f786704d8&vote=like&title=Dep%C3%B3sitos%20tokenizados%20podem%20elevar%20custos%20de%20cr%C3%A9dito%20nos%20EUA%2C%20dizem%20economistas%20do%20Fed%20de%20Dallas&source=Cointelegraph%20Brasil&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=080f786704d8&vote=dislike&title=Dep%C3%B3sitos%20tokenizados%20podem%20elevar%20custos%20de%20cr%C3%A9dito%20nos%20EUA%2C%20dizem%20economistas%20do%20Fed%20de%20Dallas&source=Cointelegraph%20Brasil&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="category-block">
+      <p class="category-title"><i class="ti ti-building-bank-2"></i>Política e fiscal</p>
+      <div>
+        
+        <p class="empty">sem notícias relevantes hoje</p>
         
       </div>
     </div>
