@@ -33,6 +33,7 @@ CATEGORIES = [
     ("commodities", "Commodities", "ti-droplet", 5),
     ("cripto", "Cripto", "ti-currency-bitcoin", 5),
     ("internacional", "Internacional", "ti-world", 5),
+    ("politica_fiscal", "Política e fiscal", "ti-building-bank-2", 5),
     ("credito_privado", "Crédito privado", "ti-file-invoice", 5),
     ("fundos", "Fundos", "ti-chart-donut", 5),
     ("imoveis", "Imóveis", "ti-building-skyscraper", 5),
@@ -71,3 +72,48 @@ MARKET_TICKERS = {
 DASHBOARD_PUBLIC_URL = os.getenv("DASHBOARD_PUBLIC_URL", "")
 
 OUTPUT_HTML_PATH = os.getenv("OUTPUT_HTML_PATH", "./docs/index.html")
+
+# --- Agenda de eventos econômicos conhecidos com antecedência ---
+# Datas oficiais (Copom: Banco Central; FOMC: Federal Reserve). Como não
+# existe uma API gratuita e confiável de calendário econômico completo,
+# mantemos aqui manualmente as datas já divulgadas oficialmente pelos
+# bancos centrais. Atualize esta lista quando os próximos calendários
+# anuais forem divulgados (geralmente no fim do ano anterior).
+AGENDA_EVENTS = [
+    # Copom 2026 (decisão da Selic no 2º dia de cada reunião)
+    {"date": "2026-01-28", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-03-18", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-04-29", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-06-17", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-08-05", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-09-16", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-11-04", "label": "Decisão do Copom (Selic)"},
+    {"date": "2026-12-09", "label": "Decisão do Copom (Selic)"},
+    # Copom 2027 (decisão da Selic no 2º dia de cada reunião)
+    {"date": "2027-01-27", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-03-17", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-04-28", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-06-16", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-08-04", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-09-22", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-10-27", "label": "Decisão do Copom (Selic)"},
+    {"date": "2027-12-08", "label": "Decisão do Copom (Selic)"},
+    # FOMC 2026 (decisão de juros dos EUA no 2º dia de cada reunião)
+    {"date": "2026-01-28", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-03-18", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-04-29", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-06-17", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-07-29", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-09-16", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-10-28", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2026-12-09", "label": "Decisão do FOMC (juros dos EUA)"},
+    # FOMC 2027 (decisão de juros dos EUA no 2º dia de cada reunião)
+    {"date": "2027-01-27", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-03-17", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-04-28", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-06-09", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-07-28", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-09-15", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-10-27", "label": "Decisão do FOMC (juros dos EUA)"},
+    {"date": "2027-12-08", "label": "Decisão do FOMC (juros dos EUA)"},
+]

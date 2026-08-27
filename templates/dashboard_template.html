@@ -77,6 +77,13 @@
 
   .footer { max-width: 1000px; margin: 0 auto; padding: 0 24px 32px; text-align: center; }
   .footer p { font-size: 11px; color: var(--text-muted); }
+
+  .agenda-block { background: var(--navy); border-radius: 4px; padding: 16px 20px; margin-bottom: 24px; }
+  .agenda-title { font-family: Georgia, "Times New Roman", serif; font-size: 13px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px; }
+  .agenda-list { display: flex; flex-wrap: wrap; gap: 20px; }
+  .agenda-item { display: flex; align-items: baseline; gap: 8px; }
+  .agenda-item .agenda-date { font-weight: 700; color: #FFFFFF; font-size: 14px; }
+  .agenda-item .agenda-label { font-size: 13px; color: rgba(255,255,255,0.8); }
 </style>
 </head>
 <body>
@@ -95,6 +102,20 @@
 </div>
 
 <div class="container">
+
+  {% if upcoming_events %}
+  <div class="agenda-block">
+    <p class="agenda-title">Agenda — próximos eventos</p>
+    <div class="agenda-list">
+      {% for ev in upcoming_events %}
+      <div class="agenda-item">
+        <span class="agenda-date">{{ ev.date }}</span>
+        <span class="agenda-label">{{ ev.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 
   <div class="metrics">
     {% for label, m in market.items() %}

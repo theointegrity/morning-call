@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader
 
 from config import CATEGORIES, OUTPUT_HTML_PATH, FEEDBACK_WEBAPP_URL
+from agenda import get_upcoming_events
 
 BRASILIA_TZ = ZoneInfo("America/Sao_Paulo")
 
@@ -54,6 +55,11 @@ def generate_html(news: dict, market_raw: dict) -> str:
     formatted_date = f"{DIAS[now.weekday()].capitalize()}, {now.day} de {MESES[now.month - 1]} de {now.year}"
     formatted_time = now.strftime("%H:%M")
 
+    upcoming_events = [
+        {"date": ev["date"].strftime("%d/%m"), "label": ev["label"]}
+        for ev in get_upcoming_events()
+    ]
+
     html = template.render(
         news=_add_ids(news),
         market=_format_market(market_raw),
@@ -61,6 +67,7 @@ def generate_html(news: dict, market_raw: dict) -> str:
         formatted_date=formatted_date,
         formatted_time=formatted_time,
         feedback_webapp_url=FEEDBACK_WEBAPP_URL,
+        upcoming_events=upcoming_events,
     )
 
     os.makedirs(os.path.dirname(OUTPUT_HTML_PATH), exist_ok=True)

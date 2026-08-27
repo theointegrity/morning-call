@@ -7,13 +7,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   :root {
-    --bg: #F7F6F2;
+    --navy: #1B2A4A;
+    --navy-light: #2A3D63;
+    --gold: #B8934A;
+    --gold-light: #D9BE84;
+    --bg: #F2EEE4;
     --card: #FFFFFF;
-    --border: #E4E2DA;
+    --border: #E4DFD0;
     --text-primary: #1F1E1B;
     --text-secondary: #6B6A63;
     --text-muted: #9B9A93;
-    --accent: #185FA5;
+    --accent: #1B2A4A;
     --danger: #A32D2D;
     --success: #3B6D11;
   }
@@ -23,80 +27,103 @@
     background: var(--bg);
     color: var(--text-primary);
     margin: 0;
-    padding: 32px 16px;
+    padding: 0;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
-  .header h1 { font-size: 20px; font-weight: 600; margin: 0; }
-  .header .sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
-  .header .updated { font-size: 13px; color: var(--text-muted); }
-  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px; }
-  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .metric-card .label { font-size: 13px; color: var(--text-secondary); margin: 0 0 4px; }
-  .metric-card .value { font-size: 22px; font-weight: 600; margin: 0; }
-  .metric-card .delta { font-size: 12px; margin: 4px 0 0; }
+  .header {
+    background: var(--navy);
+    padding: 28px 32px 20px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px; }
+  .header .brand { font-family: Georgia, "Times New Roman", serif; font-size: 26px; color: #FFFFFF; letter-spacing: 0.5px; margin: 0; }
+  .header .tagline { font-size: 12px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 4px 0 0; }
+  .header .updated { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
+  .header .sub { font-size: 13px; color: rgba(255,255,255,0.75); margin: 2px 0 0; text-align: right; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 32px 24px 48px; }
+
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 4px; padding: 16px 18px; }
+  .metric-card .label { font-size: 11px; color: var(--navy); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin: 0 0 6px; }
+  .metric-card .value { font-size: 24px; font-weight: 600; margin: 0; color: var(--text-primary); }
+  .metric-card .delta { font-size: 12px; margin: 4px 0 0; font-weight: 500; }
   .delta.up { color: var(--danger); }
   .delta.down { color: var(--success); }
   .delta.flat { color: var(--text-muted); }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-  .category-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 0 0 10px; display: flex; align-items: center; gap: 6px; }
-  .news-list { border-top: 1px solid var(--border); }
-  .news-item { display: block; padding: 10px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
-  .news-item:last-child { border-bottom: none; }
-  .news-item .title { font-size: 14px; margin: 0; color: var(--accent); }
-  .news-item .source { font-size: 12px; color: var(--text-muted); margin: 4px 0 0; }
-  .empty { font-size: 13px; color: var(--text-muted); padding: 10px 0; }
-  .news-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .header-inner { flex-direction: column; align-items: flex-start; } .header .updated, .header .sub { text-align: left; } }
+
+  .category-block { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 18px 20px; }
+  .category-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px; font-weight: 600; color: var(--navy);
+    margin: 0 0 12px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .category-title i { color: var(--gold); font-size: 16px; }
+
+  .news-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .news-row:last-child { border-bottom: none; }
-  .news-row .news-item { padding: 0; border-bottom: none; flex: 1; }
+  .news-item { padding: 0; flex: 1; text-decoration: none; color: inherit; }
+  .news-item .title { font-size: 14px; margin: 0; color: var(--navy); line-height: 1.4; }
+  .news-item .source { font-size: 11px; color: var(--text-muted); margin: 4px 0 0; text-transform: uppercase; letter-spacing: 0.4px; }
+  .empty { font-size: 13px; color: var(--text-muted); padding: 6px 0; font-style: italic; }
+
   .vote-group { display: flex; gap: 4px; flex-shrink: 0; }
-  .vote-btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); font-size: 14px; }
-  .vote-btn:hover { background: var(--bg); }
-  .vote-btn.voted-like { color: var(--success); border-color: var(--success); }
-  .vote-btn.voted-dislike { color: var(--danger); border-color: var(--danger); }
-  .vote-btn:disabled { cursor: default; opacity: 0.6; }
+  .vote-link { border: 1px solid var(--border); background: var(--card); border-radius: 4px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; }
+  .vote-link:hover { border-color: var(--gold); }
+
+  .footer { max-width: 1000px; margin: 0 auto; padding: 0 24px 32px; text-align: center; }
+  .footer p { font-size: 11px; color: var(--text-muted); }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="header">
+<div class="header">
+  <div class="header-inner">
     <div>
-      <h1>Morning call — Integrity</h1>
-      <p class="sub">Quinta-feira, 27 de agosto de 2026</p>
+      <p class="brand">Integrity Wealth</p>
+      <p class="tagline">Morning Call</p>
     </div>
-    <div class="updated">atualizado às 02:52</div>
+    <div>
+      <p class="sub">Quinta-feira, 27 de agosto de 2026</p>
+      <p class="updated">atualizado às 13:13</p>
+    </div>
   </div>
+</div>
+
+<div class="container">
 
   <div class="metrics">
     
     <div class="metric-card">
       <p class="label">USD/BRL</p>
-      <p class="value">5.15</p>
+      <p class="value">5.17</p>
       
         <p class="delta up">
-          +0.04%
+          +0.49%
         </p>
       
     </div>
     
     <div class="metric-card">
       <p class="label">Ibovespa</p>
-      <p class="value">174.586</p>
+      <p class="value">174.829</p>
       
         <p class="delta up">
-          +0.01%
+          +0.14%
         </p>
       
     </div>
     
     <div class="metric-card">
       <p class="label">Petróleo (Brent)</p>
-      <p class="value">US$ 86.28</p>
+      <p class="value">US$ 87.61</p>
       
         <p class="delta down">
-          -2.60%
+          -0.26%
         </p>
       
     </div>
@@ -113,22 +140,18 @@
 
   <div class="grid">
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-building-bank"></i>Câmbio e juros</p>
-      <div class="news-list">
+      <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.moneytimes.com.br/tesoura-maior-xp-ve-selic-menor-para-2026-veja-como-ficou-numeros-rnda/" target="_blank" rel="noopener">
-            <p class="title">Tesoura maior: XP muda projeções para Selic em 2026; veja como ficaram os números</p>
-            <p class="source">Money Times</p>
+          <a class="news-item" href="https://www.infomoney.com.br/economia/hammack-reitera-a-cnbc-que-e-hora-de-o-fed-aumentar-os-juros/" target="_blank" rel="noopener">
+            <p class="title">Hammack reitera à CNBC que é hora de o Fed aumentar os juros</p>
+            <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="e5d5ea92fae0" data-title="Tesoura maior: XP muda projeções para Selic em 2026; veja como ficaram os números" data-source="Money Times" data-category="cambio_juros" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="e5d5ea92fae0" data-title="Tesoura maior: XP muda projeções para Selic em 2026; veja como ficaram os números" data-source="Money Times" data-category="cambio_juros" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ed265dd928f5&vote=like&title=Hammack%20reitera%20%C3%A0%20CNBC%20que%20%C3%A9%20hora%20de%20o%20Fed%20aumentar%20os%20juros&source=InfoMoney&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=ed265dd928f5&vote=dislike&title=Hammack%20reitera%20%C3%A0%20CNBC%20que%20%C3%A9%20hora%20de%20o%20Fed%20aumentar%20os%20juros&source=InfoMoney&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
@@ -138,67 +161,117 @@
             <p class="source">Suno Notícias</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="34bd2c4ded36" data-title="Ibovespa fica no zero a zero aos 174 mil pontos com inflação no Brasil e nos EUA" data-source="Suno Notícias" data-category="cambio_juros" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="34bd2c4ded36" data-title="Ibovespa fica no zero a zero aos 174 mil pontos com inflação no Brasil e nos EUA" data-source="Suno Notícias" data-category="cambio_juros" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=34bd2c4ded36&vote=like&title=Ibovespa%20fica%20no%20zero%20a%20zero%20aos%20174%20mil%20pontos%20com%20infla%C3%A7%C3%A3o%20no%20Brasil%20e%20nos%20EUA&source=Suno%20Not%C3%ADcias&category=cambio_juros" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=34bd2c4ded36&vote=dislike&title=Ibovespa%20fica%20no%20zero%20a%20zero%20aos%20174%20mil%20pontos%20com%20infla%C3%A7%C3%A3o%20no%20Brasil%20e%20nos%20EUA&source=Suno%20Not%C3%ADcias&category=cambio_juros" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
       </div>
     </div>
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-chart-line"></i>Bolsa</p>
-      <div class="news-list">
-        
-        <p class="empty">sem notícias relevantes hoje</p>
-        
-      </div>
-    </div>
-    
-    <div>
-      <p class="category-title"><i class="ti ti-droplet"></i>Commodities</p>
-      <div class="news-list">
-        
-        <p class="empty">sem notícias relevantes hoje</p>
-        
-      </div>
-    </div>
-    
-    <div>
-      <p class="category-title"><i class="ti ti-currency-bitcoin"></i>Cripto</p>
-      <div class="news-list">
+      <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/magazine/shrincs-bip-is-published-quantum-secure-bitcoin-comes-with-a-catch?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">BIP SHRINCS publicado: Bitcoin à prova de quantum vem com um porém</p>
-            <p class="source">Cointelegraph Brasil</p>
+          <a class="news-item" href="https://www.infomoney.com.br/mercados/ibovespa-abertura-fechamento-27082026/" target="_blank" rel="noopener">
+            <p class="title">Ibovespa recua na contramão do exterior, após sequência positiva</p>
+            <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="bc952cc07996" data-title="BIP SHRINCS publicado: Bitcoin à prova de quantum vem com um porém" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="bc952cc07996" data-title="BIP SHRINCS publicado: Bitcoin à prova de quantum vem com um porém" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fd38fb0ab890&vote=like&title=Ibovespa%20recua%20na%20contram%C3%A3o%20do%20exterior%2C%20ap%C3%B3s%20sequ%C3%AAncia%20positiva&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fd38fb0ab890&vote=dislike&title=Ibovespa%20recua%20na%20contram%C3%A3o%20do%20exterior%2C%20ap%C3%B3s%20sequ%C3%AAncia%20positiva&source=InfoMoney&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/news/better-launches-bitcoin-backed-mortgages-powered-by-coinbase?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">Better lança hipotecas garantidas por Bitcoin com tecnologia da Coinbase</p>
+          <a class="news-item" href="https://br.investing.com/news/stock-market-news/petrobras-ve-potencial-para-exportar-gas-liquefeito-do-presal-diz-ceo-2051463" target="_blank" rel="noopener">
+            <p class="title">Petrobras vê potencial para exportar gás liquefeito do pré-sal, diz CEO</p>
+            <p class="source">Investing.com Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=70b012ab083f&vote=like&title=Petrobras%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Investing.com%20Brasil&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=70b012ab083f&vote=dislike&title=Petrobras%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Investing.com%20Brasil&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.moneytimes.com.br/petrobras-petr4-ve-potencial-para-exportar-gas-liquefeito-do-pre-sal-diz-ceo-pads/" target="_blank" rel="noopener">
+            <p class="title">Petrobras (PETR4) vê potencial para exportar gás liquefeito do pré-sal, diz CEO</p>
+            <p class="source">Money Times</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=270dbf04d05b&vote=like&title=Petrobras%20%28PETR4%29%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Money%20Times&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=270dbf04d05b&vote=dislike&title=Petrobras%20%28PETR4%29%20v%C3%AA%20potencial%20para%20exportar%20g%C3%A1s%20liquefeito%20do%20pr%C3%A9-sal%2C%20diz%20CEO&source=Money%20Times&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.moneytimes.com.br/ca-ceab3-agrada-com-plano-para-os-proximos-anos-e-acoes-estao-baratas-demais-para-serem-ignoradas-lmrs/" target="_blank" rel="noopener">
+            <p class="title">C&A (CEAB3) na liquidação? Ação pode quase dobrar de preço, calcula Safra; plano estratégico agrada</p>
+            <p class="source">Money Times</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=d40453fc466a&vote=like&title=C%26A%20%28CEAB3%29%20na%20liquida%C3%A7%C3%A3o%3F%20A%C3%A7%C3%A3o%20pode%20quase%20dobrar%20de%20pre%C3%A7o%2C%20calcula%20Safra%3B%20plano%20estrat%C3%A9gico%20agrada&source=Money%20Times&category=bolsa" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=d40453fc466a&vote=dislike&title=C%26A%20%28CEAB3%29%20na%20liquida%C3%A7%C3%A3o%3F%20A%C3%A7%C3%A3o%20pode%20quase%20dobrar%20de%20pre%C3%A7o%2C%20calcula%20Safra%3B%20plano%20estrat%C3%A9gico%20agrada&source=Money%20Times&category=bolsa" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="category-block">
+      <p class="category-title"><i class="ti ti-droplet"></i>Commodities</p>
+      <div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://br.investing.com/news/commodities-news/deral-ve-leve-alta-na-area-de-soja-do-parana-em-2627-e-aumento-de-4-na-safra-2051462" target="_blank" rel="noopener">
+            <p class="title">Deral vê leve alta na área de soja do Paraná em 26/27 e aumento de 4% na safra</p>
+            <p class="source">Investing.com Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3f040eac0cbb&vote=like&title=Deral%20v%C3%AA%20leve%20alta%20na%20%C3%A1rea%20de%20soja%20do%20Paran%C3%A1%20em%2026/27%20e%20aumento%20de%204%25%20na%20safra&source=Investing.com%20Brasil&category=commodities" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=3f040eac0cbb&vote=dislike&title=Deral%20v%C3%AA%20leve%20alta%20na%20%C3%A1rea%20de%20soja%20do%20Paran%C3%A1%20em%2026/27%20e%20aumento%20de%204%25%20na%20safra&source=Investing.com%20Brasil&category=commodities" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/news/bitfinex-securities-record-50-million-tokenized-nickel-project?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Bitfinex Securities conclui captação recorde de US$ 50 milhões em capital tokenizado</p>
             <p class="source">Cointelegraph Brasil</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="103bfe04a97c" data-title="Better lança hipotecas garantidas por Bitcoin com tecnologia da Coinbase" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="103bfe04a97c" data-title="Better lança hipotecas garantidas por Bitcoin com tecnologia da Coinbase" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=694832d7e6ec&vote=like&title=Bitfinex%20Securities%20conclui%20capta%C3%A7%C3%A3o%20recorde%20de%20US%24%2050%20milh%C3%B5es%20em%20capital%20tokenizado&source=Cointelegraph%20Brasil&category=commodities" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=694832d7e6ec&vote=dislike&title=Bitfinex%20Securities%20conclui%20capta%C3%A7%C3%A3o%20recorde%20de%20US%24%2050%20milh%C3%B5es%20em%20capital%20tokenizado&source=Cointelegraph%20Brasil&category=commodities" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="category-block">
+      <p class="category-title"><i class="ti ti-currency-bitcoin"></i>Cripto</p>
+      <div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/news/uk-government-crypto-millionaires-2025?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Governo do Reino Unido registra 240 milionários de criptomoedas em 2025</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fc65ec11a1b1&vote=like&title=Governo%20do%20Reino%20Unido%20registra%20240%20milion%C3%A1rios%20de%20criptomoedas%20em%202025&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=fc65ec11a1b1&vote=dislike&title=Governo%20do%20Reino%20Unido%20registra%20240%20milion%C3%A1rios%20de%20criptomoedas%20em%202025&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://cointelegraph.com.br/markets/bitcoin-faces-true-demand-test-above-83k-as-liquidity-thickens-glassnode?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Bitcoin enfrenta um verdadeiro teste de demanda acima de US$ 83 mil à medida que a liquidez se adensa: Glassnode</p>
+            <p class="source">Cointelegraph Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=61d252b3b0a5&vote=like&title=Bitcoin%20enfrenta%20um%20verdadeiro%20teste%20de%20demanda%20acima%20de%20US%24%2083%20mil%20%C3%A0%20medida%20que%20a%20liquidez%20se%20adensa%3A%20Glassnode&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=61d252b3b0a5&vote=dislike&title=Bitcoin%20enfrenta%20um%20verdadeiro%20teste%20de%20demanda%20acima%20de%20US%24%2083%20mil%20%C3%A0%20medida%20que%20a%20liquidez%20se%20adensa%3A%20Glassnode&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
@@ -208,91 +281,152 @@
             <p class="source">Cointelegraph Brasil</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="032ad1ab8ad0" data-title="Veja o que aconteceu hoje no mundo cripto" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="032ad1ab8ad0" data-title="Veja o que aconteceu hoje no mundo cripto" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=032ad1ab8ad0&vote=like&title=Veja%20o%20que%20aconteceu%20hoje%20no%20mundo%20cripto&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=032ad1ab8ad0&vote=dislike&title=Veja%20o%20que%20aconteceu%20hoje%20no%20mundo%20cripto&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/news/chainalysis-estimates-457b-in-potentially-taxable-crypto-activity-says-carf-misses-most-onchain-flows?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">Chainalysis estima US$ 457 bilhões em atividade cripto tributável e diz que o CARF deixa de fora a maior parte</p>
+          <a class="news-item" href="https://cointelegraph.com.br/news/bithumb-wins-suits-mistakenly-credited-bitcoin?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Bithumb vence 2 processos por créditos equivocados de Bitcoin: relatório</p>
             <p class="source">Cointelegraph Brasil</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="7c9d05a4663e" data-title="Chainalysis estima US$ 457 bilhões em atividade cripto tributável e diz que o CARF deixa de fora a maior parte" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="7c9d05a4663e" data-title="Chainalysis estima US$ 457 bilhões em atividade cripto tributável e diz que o CARF deixa de fora a maior parte" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=6dc18f91ce1a&vote=like&title=Bithumb%20vence%202%20processos%20por%20cr%C3%A9ditos%20equivocados%20de%20Bitcoin%3A%20relat%C3%B3rio&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=6dc18f91ce1a&vote=dislike&title=Bithumb%20vence%202%20processos%20por%20cr%C3%A9ditos%20equivocados%20de%20Bitcoin%3A%20relat%C3%B3rio&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
         <div class="news-row">
-          <a class="news-item" href="https://cointelegraph.com.br/news/sec-crypto-custody-rules-investment-firms-white-house?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
-            <p class="title">SEC envia revisão das regras de custódia de criptomoedas à Casa Branca para análise</p>
+          <a class="news-item" href="https://cointelegraph.com.br/markets/bitcoin-etf-inflows-slow-232-million-btc-under-80k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" rel="noopener">
+            <p class="title">Entradas em ETFs de Bitcoin desaceleram para US$ 232 milhões enquanto o BTC permanece abaixo de US$ 80 mil</p>
             <p class="source">Cointelegraph Brasil</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="47f1c8716dcc" data-title="SEC envia revisão das regras de custódia de criptomoedas à Casa Branca para análise" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="47f1c8716dcc" data-title="SEC envia revisão das regras de custódia de criptomoedas à Casa Branca para análise" data-source="Cointelegraph Brasil" data-category="cripto" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a3b179ebcdaa&vote=like&title=Entradas%20em%20ETFs%20de%20Bitcoin%20desaceleram%20para%20US%24%20232%20milh%C3%B5es%20enquanto%20o%20BTC%20permanece%20abaixo%20de%20US%24%2080%20mil&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=a3b179ebcdaa&vote=dislike&title=Entradas%20em%20ETFs%20de%20Bitcoin%20desaceleram%20para%20US%24%20232%20milh%C3%B5es%20enquanto%20o%20BTC%20permanece%20abaixo%20de%20US%24%2080%20mil&source=Cointelegraph%20Brasil&category=cripto" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
       </div>
     </div>
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-world"></i>Internacional</p>
-      <div class="news-list">
+      <div>
         
         <div class="news-row">
-          <a class="news-item" href="https://www.infomoney.com.br/business/alibaba-conclui-captacao-de-us-102-bi-para-investimentos-em-ia/" target="_blank" rel="noopener">
-            <p class="title">Alibaba conclui captação de US$ 10,2 bi para investimentos em IA</p>
+          <a class="news-item" href="https://www.infomoney.com.br/mundo/investigacao-dos-eua-mira-rota-clandestina-de-chips-nvidia-para-a-china/" target="_blank" rel="noopener">
+            <p class="title">Investigação dos EUA mira rota clandestina de chips Nvidia para a China</p>
             <p class="source">InfoMoney</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="a96773cc2547" data-title="Alibaba conclui captação de US$ 10,2 bi para investimentos em IA" data-source="InfoMoney" data-category="internacional" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="a96773cc2547" data-title="Alibaba conclui captação de US$ 10,2 bi para investimentos em IA" data-source="InfoMoney" data-category="internacional" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=bf1cb43b65b5&vote=like&title=Investiga%C3%A7%C3%A3o%20dos%20EUA%20mira%20rota%20clandestina%20de%20chips%20Nvidia%20para%20a%20China&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=bf1cb43b65b5&vote=dislike&title=Investiga%C3%A7%C3%A3o%20dos%20EUA%20mira%20rota%20clandestina%20de%20chips%20Nvidia%20para%20a%20China&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.infomoney.com.br/politica/lucro-industrial-da-china-sobe-112-na-comparacao-anual-de-julho/" target="_blank" rel="noopener">
+            <p class="title">Lucro industrial da China sobe 11,2% na comparação anual de julho</p>
+            <p class="source">InfoMoney</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=04dc4d9e067d&vote=like&title=Lucro%20industrial%20da%20China%20sobe%2011%2C2%25%20na%20compara%C3%A7%C3%A3o%20anual%20de%20julho&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=04dc4d9e067d&vote=dislike&title=Lucro%20industrial%20da%20China%20sobe%2011%2C2%25%20na%20compara%C3%A7%C3%A3o%20anual%20de%20julho&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-27082026/" target="_blank" rel="noopener">
+            <p class="title">Ibovespa Hoje Ao Vivo: Bolsa passa a oscilar e ronda os 174 mil pontos</p>
+            <p class="source">InfoMoney</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35b6034ddee8&vote=like&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20174%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=35b6034ddee8&vote=dislike&title=Ibovespa%20Hoje%20Ao%20Vivo%3A%20Bolsa%20passa%20a%20oscilar%20e%20ronda%20os%20174%20mil%20pontos&source=InfoMoney&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://br.investing.com/news/economy-news/citrini-research-preve-rali-nos-titulos-com-mudanca-na-politica-do-fed-2051461" target="_blank" rel="noopener">
+            <p class="title">Citrini Research prevê rali nos títulos com mudança na política do Fed</p>
+            <p class="source">Investing.com Brasil</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b2ce5cf25b43&vote=like&title=Citrini%20Research%20prev%C3%AA%20rali%20nos%20t%C3%ADtulos%20com%20mudan%C3%A7a%20na%20pol%C3%ADtica%20do%20Fed&source=Investing.com%20Brasil&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b2ce5cf25b43&vote=dislike&title=Citrini%20Research%20prev%C3%AA%20rali%20nos%20t%C3%ADtulos%20com%20mudan%C3%A7a%20na%20pol%C3%ADtica%20do%20Fed&source=Investing.com%20Brasil&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.moneytimes.com.br/trump-assina-proclamacao-para-ampliar-temporariamente-importacao-de-carne-bovina-magra-pads/" target="_blank" rel="noopener">
+            <p class="title">Trump assina proclamação para ampliar temporariamente importação de carne bovina magra</p>
+            <p class="source">Money Times</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=98b328f09f0b&vote=like&title=Trump%20assina%20proclama%C3%A7%C3%A3o%20para%20ampliar%20temporariamente%20importa%C3%A7%C3%A3o%20de%20carne%20bovina%20magra&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=98b328f09f0b&vote=dislike&title=Trump%20assina%20proclama%C3%A7%C3%A3o%20para%20ampliar%20temporariamente%20importa%C3%A7%C3%A3o%20de%20carne%20bovina%20magra&source=Money%20Times&category=internacional" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
       </div>
     </div>
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-file-invoice"></i>Crédito privado</p>
-      <div class="news-list">
+      <div>
         
         <p class="empty">sem notícias relevantes hoje</p>
         
       </div>
     </div>
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-chart-donut"></i>Fundos</p>
-      <div class="news-list">
+      <div>
         
         <p class="empty">sem notícias relevantes hoje</p>
         
       </div>
     </div>
     
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti ti-building-skyscraper"></i>Imóveis</p>
-      <div class="news-list">
+      <div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.suno.com.br/noticias/btlg11-compra-galpao-em-guarulhos/" target="_blank" rel="noopener">
+            <p class="title">BTLG11 fecha compra milionária de galpão logístico em SP</p>
+            <p class="source">Suno Notícias</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b1bb23784bbd&vote=like&title=BTLG11%20fecha%20compra%20milion%C3%A1ria%20de%20galp%C3%A3o%20log%C3%ADstico%20em%20SP&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=b1bb23784bbd&vote=dislike&title=BTLG11%20fecha%20compra%20milion%C3%A1ria%20de%20galp%C3%A3o%20log%C3%ADstico%20em%20SP&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.suno.com.br/noticias/hgru11-7a-emissao-preco-12820/" target="_blank" rel="noopener">
+            <p class="title">HGRU11 detalha oferta bilionária de cotas; entenda como funciona</p>
+            <p class="source">Suno Notícias</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=7b440860b6e0&vote=like&title=HGRU11%20detalha%20oferta%20bilion%C3%A1ria%20de%20cotas%3B%20entenda%20como%20funciona&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=7b440860b6e0&vote=dislike&title=HGRU11%20detalha%20oferta%20bilion%C3%A1ria%20de%20cotas%3B%20entenda%20como%20funciona&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
+        
+        <div class="news-row">
+          <a class="news-item" href="https://www.suno.com.br/noticias/rendimentos-do-pmll11-sobem-82/" target="_blank" rel="noopener">
+            <p class="title">PMLL11 avança 82% no resultado de julho e negocia com desconto; entenda</p>
+            <p class="source">Suno Notícias</p>
+          </a>
+          <div class="vote-group">
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=9479e4c25259&vote=like&title=PMLL11%20avan%C3%A7a%2082%25%20no%20resultado%20de%20julho%20e%20negocia%20com%20desconto%3B%20entenda&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=9479e4c25259&vote=dislike&title=PMLL11%20avan%C3%A7a%2082%25%20no%20resultado%20de%20julho%20e%20negocia%20com%20desconto%3B%20entenda&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
+          </div>
+        </div>
         
         <div class="news-row">
           <a class="news-item" href="https://www.suno.com.br/noticias/snci11-tem-resultado-de-r-314-mi-fii-fecha-julho-com-r-358-milhoes-em-caixa/" target="_blank" rel="noopener">
@@ -300,12 +434,8 @@
             <p class="source">Suno Notícias</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="7f4134eb9823" data-title="SNCI11 tem resultado de R$ 3,14 mi; FII fecha julho com R$ 35,8 milhões em caixa" data-source="Suno Notícias" data-category="imoveis" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="7f4134eb9823" data-title="SNCI11 tem resultado de R$ 3,14 mi; FII fecha julho com R$ 35,8 milhões em caixa" data-source="Suno Notícias" data-category="imoveis" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=7f4134eb9823&vote=like&title=SNCI11%20tem%20resultado%20de%20R%24%203%2C14%20mi%3B%20FII%20fecha%20julho%20com%20R%24%2035%2C8%20milh%C3%B5es%20em%20caixa&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec?id=7f4134eb9823&vote=dislike&title=SNCI11%20tem%20resultado%20de%20R%24%203%2C14%20mi%3B%20FII%20fecha%20julho%20com%20R%24%2035%2C8%20milh%C3%B5es%20em%20caixa&source=Suno%20Not%C3%ADcias&category=imoveis" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         
@@ -316,30 +446,9 @@
 
 </div>
 
-<script>
-  const FEEDBACK_URL = "https://script.google.com/macros/s/AKfycbz8i70KdemwXE1t_LJzNlKl3IwTEOm6jPEhZvzQPkMsQ6YiM3gPcHxatY8EOAHEZcTloQ/exec";
+<div class="footer">
+  <p>Integrity Wealth Management · Morning Call gerado automaticamente</p>
+</div>
 
-  function registerVote(btn) {
-    if (!FEEDBACK_URL) {
-      console.warn("FEEDBACK_WEBAPP_URL não configurada -- voto não será salvo.");
-    } else {
-      const params = new URLSearchParams({
-        id: btn.dataset.id,
-        vote: btn.dataset.vote,
-        title: btn.dataset.title,
-        source: btn.dataset.source,
-        category: btn.dataset.category
-      });
-      fetch(FEEDBACK_URL + "?" + params.toString(), { mode: "no-cors" });
-    }
-
-    const group = btn.parentElement;
-    group.querySelectorAll(".vote-btn").forEach(b => {
-      b.disabled = true;
-      b.classList.remove("voted-like", "voted-dislike");
-    });
-    btn.classList.add(btn.dataset.vote === "like" ? "voted-like" : "voted-dislike");
-  }
-</script>
 </body>
 </html>

@@ -40,6 +40,11 @@ CATEGORY_KEYWORDS = {
         "balanco trimestral", "temporada de resultados", "divulga balanço",
         "divulga balanco", "lucro líquido de", "lucro liquido de",
         "lucro do trimestre",
+        # M&A, dividendos e fatos relevantes
+        "aquisição da", "aquisicao da", "fusão entre", "fusao entre",
+        "compra fatia", "oferta pública de aquisição", "oferta publica de aquisicao",
+        " opa ", "dividendos", "juros sobre capital próprio", "jcp",
+        "fato relevante", "aprova incorporação", "aprova incorporacao",
     ],
     "commodities": [
         "petróleo", "petroleo", "brent", "minério", "minerio", "soja",
@@ -61,6 +66,16 @@ CATEGORY_KEYWORDS = {
         "tensao geopolitica", "tensões geopolíticas", "oriente médio",
         "oriente medio", "guerra comercial", "escalada de tensões",
         "escalada de tensoes", "conflito no", "guerra na",
+    ],
+    "politica_fiscal": [
+        "congresso nacional", "câmara dos deputados", "camara dos deputados",
+        "senado federal", "reforma tributária", "reforma tributaria",
+        "arcabouço fiscal", "arcabouco fiscal", "risco fiscal", "meta fiscal",
+        "déficit fiscal", "deficit fiscal", "superávit fiscal", "superavit fiscal",
+        "ministério da fazenda", "ministerio da fazenda", "pacote fiscal",
+        "planalto", "governo federal", "eleições presidenciais",
+        "eleicoes presidenciais", "stf", "supremo tribunal federal",
+        "medida provisória", "medida provisoria", "projeto de lei",
     ],
     "credito_privado": [
         "crédito privado", "credito privado", "debênture", "debenture",
@@ -87,7 +102,7 @@ CATEGORY_KEYWORDS = {
 # "imoveis", não em "bolsa" só porque "Itaú" aparece antes na lista.
 CLASSIFICATION_PRIORITY = [
     "cripto", "credito_privado", "imoveis", "fundos",
-    "commodities", "cambio_juros", "internacional", "bolsa",
+    "politica_fiscal", "commodities", "cambio_juros", "internacional", "bolsa",
 ]
 
 
