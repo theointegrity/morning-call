@@ -7,13 +7,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   :root {
-    --bg: #F7F6F2;
+    --navy: #1B2A4A;
+    --navy-light: #2A3D63;
+    --gold: #B8934A;
+    --gold-light: #D9BE84;
+    --bg: #F2EEE4;
     --card: #FFFFFF;
-    --border: #E4E2DA;
+    --border: #E4DFD0;
     --text-primary: #1F1E1B;
     --text-secondary: #6B6A63;
     --text-muted: #9B9A93;
-    --accent: #185FA5;
+    --accent: #1B2A4A;
     --danger: #A32D2D;
     --success: #3B6D11;
   }
@@ -23,51 +27,74 @@
     background: var(--bg);
     color: var(--text-primary);
     margin: 0;
-    padding: 32px 16px;
+    padding: 0;
   }
-  .container { max-width: 900px; margin: 0 auto; }
-  .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
-  .header h1 { font-size: 20px; font-weight: 600; margin: 0; }
-  .header .sub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
-  .header .updated { font-size: 13px; color: var(--text-muted); }
-  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px; }
-  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .metric-card .label { font-size: 13px; color: var(--text-secondary); margin: 0 0 4px; }
-  .metric-card .value { font-size: 22px; font-weight: 600; margin: 0; }
-  .metric-card .delta { font-size: 12px; margin: 4px 0 0; }
+  .header {
+    background: var(--navy);
+    padding: 28px 32px 20px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 8px; }
+  .header .brand { font-family: Georgia, "Times New Roman", serif; font-size: 26px; color: #FFFFFF; letter-spacing: 0.5px; margin: 0; }
+  .header .tagline { font-size: 12px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 4px 0 0; }
+  .header .updated { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; }
+  .header .sub { font-size: 13px; color: rgba(255,255,255,0.75); margin: 2px 0 0; text-align: right; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 32px 24px 48px; }
+
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 4px; padding: 16px 18px; }
+  .metric-card .label { font-size: 11px; color: var(--navy); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin: 0 0 6px; }
+  .metric-card .value { font-size: 24px; font-weight: 600; margin: 0; color: var(--text-primary); }
+  .metric-card .delta { font-size: 12px; margin: 4px 0 0; font-weight: 500; }
   .delta.up { color: var(--danger); }
   .delta.down { color: var(--success); }
   .delta.flat { color: var(--text-muted); }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-  .category-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 0 0 10px; display: flex; align-items: center; gap: 6px; }
-  .news-list { border-top: 1px solid var(--border); }
-  .news-item { display: block; padding: 10px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
-  .news-item:last-child { border-bottom: none; }
-  .news-item .title { font-size: 14px; margin: 0; color: var(--accent); }
-  .news-item .source { font-size: 12px; color: var(--text-muted); margin: 4px 0 0; }
-  .empty { font-size: 13px; color: var(--text-muted); padding: 10px 0; }
-  .news-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .header-inner { flex-direction: column; align-items: flex-start; } .header .updated, .header .sub { text-align: left; } }
+
+  .category-block { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 18px 20px; }
+  .category-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px; font-weight: 600; color: var(--navy);
+    margin: 0 0 12px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .category-title i { color: var(--gold); font-size: 16px; }
+
+  .news-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .news-row:last-child { border-bottom: none; }
-  .news-row .news-item { padding: 0; border-bottom: none; flex: 1; }
+  .news-item { padding: 0; flex: 1; text-decoration: none; color: inherit; }
+  .news-item .title { font-size: 14px; margin: 0; color: var(--navy); line-height: 1.4; }
+  .news-item .source { font-size: 11px; color: var(--text-muted); margin: 4px 0 0; text-transform: uppercase; letter-spacing: 0.4px; }
+  .empty { font-size: 13px; color: var(--text-muted); padding: 6px 0; font-style: italic; }
+
   .vote-group { display: flex; gap: 4px; flex-shrink: 0; }
-  .vote-btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); font-size: 14px; }
-  .vote-btn:hover { background: var(--bg); }
-  .vote-btn.voted-like { color: var(--success); border-color: var(--success); }
-  .vote-btn.voted-dislike { color: var(--danger); border-color: var(--danger); }
-  .vote-btn:disabled { cursor: default; opacity: 0.6; }
+  .vote-link { border: 1px solid var(--border); background: var(--card); border-radius: 4px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; }
+  .vote-link:hover { border-color: var(--gold); }
+
+  .footer { max-width: 1000px; margin: 0 auto; padding: 0 24px 32px; text-align: center; }
+  .footer p { font-size: 11px; color: var(--text-muted); }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="header">
+<div class="header">
+  <div class="header-inner">
     <div>
-      <h1>Morning call — Integrity</h1>
-      <p class="sub">{{ formatted_date }}</p>
+      <p class="brand">Integrity Wealth</p>
+      <p class="tagline">Morning Call</p>
     </div>
-    <div class="updated">atualizado às {{ formatted_time }}</div>
+    <div>
+      <p class="sub">{{ formatted_date }}</p>
+      <p class="updated">atualizado às {{ formatted_time }}</p>
+    </div>
   </div>
+</div>
+
+<div class="container">
 
   <div class="metrics">
     {% for label, m in market.items() %}
@@ -87,9 +114,9 @@
 
   <div class="grid">
     {% for key, title, icon, _qty in categories %}
-    <div>
+    <div class="category-block">
       <p class="category-title"><i class="ti {{ icon }}"></i>{{ title }}</p>
-      <div class="news-list">
+      <div>
         {% for item in news.get(key, []) %}
         <div class="news-row">
           <a class="news-item" href="{{ item.link }}" target="_blank" rel="noopener">
@@ -97,12 +124,8 @@
             <p class="source">{{ item.source }}</p>
           </a>
           <div class="vote-group">
-            <button class="vote-btn" data-id="{{ item.id }}" data-title="{{ item.title }}" data-source="{{ item.source }}" data-category="{{ key }}" data-vote="like" onclick="registerVote(this)" aria-label="Marcar como boa notícia">
-              <i class="ti ti-thumb-up" aria-hidden="true"></i>
-            </button>
-            <button class="vote-btn" data-id="{{ item.id }}" data-title="{{ item.title }}" data-source="{{ item.source }}" data-category="{{ key }}" data-vote="dislike" onclick="registerVote(this)" aria-label="Marcar como notícia ruim">
-              <i class="ti ti-thumb-down" aria-hidden="true"></i>
-            </button>
+            <a class="vote-link" href="{{ feedback_webapp_url }}?id={{ item.id }}&vote=like&title={{ item.title | urlencode }}&source={{ item.source | urlencode }}&category={{ key }}" target="_blank" rel="noopener" title="Boa notícia">👍</a>
+            <a class="vote-link" href="{{ feedback_webapp_url }}?id={{ item.id }}&vote=dislike&title={{ item.title | urlencode }}&source={{ item.source | urlencode }}&category={{ key }}" target="_blank" rel="noopener" title="Notícia ruim">👎</a>
           </div>
         </div>
         {% else %}
@@ -115,30 +138,9 @@
 
 </div>
 
-<script>
-  const FEEDBACK_URL = "{{ feedback_webapp_url }}";
+<div class="footer">
+  <p>Integrity Wealth Management · Morning Call gerado automaticamente</p>
+</div>
 
-  function registerVote(btn) {
-    if (!FEEDBACK_URL) {
-      console.warn("FEEDBACK_WEBAPP_URL não configurada -- voto não será salvo.");
-    } else {
-      const params = new URLSearchParams({
-        id: btn.dataset.id,
-        vote: btn.dataset.vote,
-        title: btn.dataset.title,
-        source: btn.dataset.source,
-        category: btn.dataset.category
-      });
-      fetch(FEEDBACK_URL + "?" + params.toString(), { mode: "no-cors" });
-    }
-
-    const group = btn.parentElement;
-    group.querySelectorAll(".vote-btn").forEach(b => {
-      b.disabled = true;
-      b.classList.remove("voted-like", "voted-dislike");
-    });
-    btn.classList.add(btn.dataset.vote === "like" ? "voted-like" : "voted-dislike");
-  }
-</script>
 </body>
 </html>
