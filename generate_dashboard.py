@@ -4,9 +4,12 @@ Gera o arquivo HTML final do dashboard a partir do template Jinja2.
 import hashlib
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader
 
 from config import CATEGORIES, OUTPUT_HTML_PATH, FEEDBACK_WEBAPP_URL
+
+BRASILIA_TZ = ZoneInfo("America/Sao_Paulo")
 
 DIAS = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"]
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
@@ -47,7 +50,7 @@ def generate_html(news: dict, market_raw: dict) -> str:
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("dashboard_template.html")
 
-    now = datetime.now()
+    now = datetime.now(BRASILIA_TZ)
     formatted_date = f"{DIAS[now.weekday()].capitalize()}, {now.day} de {MESES[now.month - 1]} de {now.year}"
     formatted_time = now.strftime("%H:%M")
 
