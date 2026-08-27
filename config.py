@@ -30,6 +30,7 @@ FEEDBACK_WEBAPP_URL = os.getenv("FEEDBACK_WEBAPP_URL", "")
 CATEGORIES = [
     ("cambio_juros", "Câmbio e juros", "ti-building-bank", 5),
     ("bolsa", "Bolsa", "ti-chart-line", 5),
+    ("empresas", "Empresas", "ti-briefcase", 5),
     ("commodities", "Commodities", "ti-droplet", 5),
     ("cripto", "Cripto", "ti-currency-bitcoin", 5),
     ("internacional", "Internacional", "ti-world", 5),

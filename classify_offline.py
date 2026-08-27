@@ -31,20 +31,27 @@ CATEGORY_KEYWORDS = {
         # notícia de "ações" de empresas estrangeiras (isso vai para
         # "internacional")
         "ibovespa", "bovespa", "b3", "bolsa brasileira", "pregão da b3",
-        "mercado acionário brasileiro", "petrobras", "ações da vale",
-        "mineradora vale", "itaú", "itau", "bradesco", "banco do brasil",
-        "ambev", "weg", "magazine luiza", "magalu", "small cap", "small caps",
+        "mercado acionário brasileiro", "small cap", "small caps",
         "blue chip", "blue chips",
+    ],
+    "empresas": [
+        "petrobras", "ações da vale", "mineradora vale", "itaú", "itau",
+        "bradesco", "banco do brasil", "ambev", "weg", "magazine luiza",
+        "magalu",
         # resultados/balanços de empresas (earnings season)
         "resultados trimestrais", "resultado trimestral", "balanço trimestral",
         "balanco trimestral", "temporada de resultados", "divulga balanço",
         "divulga balanco", "lucro líquido de", "lucro liquido de",
         "lucro do trimestre",
         # M&A, dividendos e fatos relevantes
-        "aquisição da", "aquisicao da", "fusão entre", "fusao entre",
-        "compra fatia", "oferta pública de aquisição", "oferta publica de aquisicao",
+        "aquisição", "aquisicao", "adquire fatia", "adquire participação",
+        "adquire participacao", "compra fatia", "compra participação",
+        "compra participacao", "vende fatia", "vende participação",
+        "vende participacao", "fusão", "fusao",
+        "oferta pública de aquisição", "oferta publica de aquisicao",
         " opa ", "dividendos", "juros sobre capital próprio", "jcp",
         "fato relevante", "aprova incorporação", "aprova incorporacao",
+        "recompra de ações", "recompra de acoes", "buyback",
     ],
     "commodities": [
         "petróleo", "petroleo", "brent", "minério", "minerio", "soja",
@@ -110,7 +117,8 @@ CATEGORY_KEYWORDS = {
 # "imoveis", não em "bolsa" só porque "Itaú" aparece antes na lista.
 CLASSIFICATION_PRIORITY = [
     "cripto", "credito_privado", "imoveis", "fundos",
-    "politica_fiscal", "commodities", "cambio_juros", "internacional", "bolsa",
+    "politica_fiscal", "empresas", "commodities", "cambio_juros",
+    "internacional", "bolsa",
 ]
 
 
