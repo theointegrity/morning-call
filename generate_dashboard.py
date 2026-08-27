@@ -32,6 +32,12 @@ def _format_market(market_raw: dict) -> dict:
             display = f"{value:,.0f}".replace(",", ".")
         elif label == "Petróleo (Brent)":
             display = f"US$ {value:.2f}"
+        elif label == "Bitcoin (USD)":
+            display = f"US$ {value:,.0f}".replace(",", ".")
+        elif label == "HASH11":
+            display = f"R$ {value:.2f}"
+        elif label == "Tesouro Prefixado 2029":
+            display = f"{value:.2f}% a.a."
         else:
             display = str(value)
         formatted[label] = {"display_value": display, "change_pct": m.get("change_pct")}

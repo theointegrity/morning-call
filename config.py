@@ -67,6 +67,8 @@ MARKET_TICKERS = {
     "USD/BRL": "BRL=X",
     "Ibovespa": "^BVSP",
     "Petróleo (Brent)": "BZ=F",
+    "Bitcoin (USD)": "BTC-USD",
+    "HASH11": "HASH11.SA",
 }
 
 # --- Publicação (GitHub Pages) ---

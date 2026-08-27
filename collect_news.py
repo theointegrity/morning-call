@@ -58,6 +58,8 @@ def fetch_market_data() -> dict:
 
     # Selic não vem do Yahoo Finance -- puxa direto da API do Banco Central
     data["Selic"] = fetch_selic()
+    # DI29 não tem API gratuita -- usamos o Tesouro Prefixado 2029 como proxy
+    data["Tesouro Prefixado 2029"] = fetch_tesouro_prefixado_2029()
     return data
 
 
@@ -71,6 +73,39 @@ def fetch_selic() -> dict:
         return {"value": valor, "change_pct": None}
     except Exception as e:
         print(f"[aviso] falha ao buscar Selic: {e}")
+        return {"value": None, "change_pct": None}
+
+
+def fetch_tesouro_prefixado_2029() -> dict:
+    """
+    Busca a taxa do Tesouro Prefixado 2029 (LTN 2029) via API pública do
+    Tesouro Direto. Usada como proxy gratuito da curva de juros DI29, já
+    que não existe API gratuita/barata para o contrato futuro de DI em si
+    (ver conversa/README para mais contexto sobre essa limitação).
+    """
+    import requests
+
+    url = "https://www.tesourodireto.com.br/json/br/com/b3/tesourodireto/service/api/treasurybondsinfo.json"
+    try:
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        bonds = data.get("response", {}).get("TrsrBdTradgList", [])
+
+        for b in bonds:
+            info = b.get("TrsrBd", {})
+            name = info.get("nm", "") or info.get("name", "")
+            # Queremos o prefixado "simples" de 2029, não o com juros semestrais
+            if "Prefixado" in name and "2029" in name and "Juros" not in name:
+                rate = info.get("anulInvstmtRate") or info.get("investmentRate")
+                if rate is not None:
+                    return {"value": float(rate), "change_pct": None}
+
+        print("[aviso] Tesouro Prefixado 2029 não encontrado na resposta da API "
+              "(pode ter vencido ou o nome mudou -- confira o JSON manualmente)")
+        return {"value": None, "change_pct": None}
+    except Exception as e:
+        print(f"[aviso] falha ao buscar Tesouro Prefixado 2029: {e}")
         return {"value": None, "change_pct": None}
 
 
