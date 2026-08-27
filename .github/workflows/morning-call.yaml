@@ -1,0 +1,41 @@
+name: Morning Call
+
+on:
+  schedule:
+    # 07:00 no horário de Brasília (UTC-3) = 10:00 UTC, de segunda a sexta.
+    # O GitHub Actions só entende horário UTC em agendamentos.
+    - cron: '0 10 * * 1-5'
+  workflow_dispatch: # permite rodar manualmente pela aba "Actions" do GitHub, para testes
+
+permissions:
+  contents: write # necessário para o script conseguir dar `git push` no docs/index.html
+
+jobs:
+  send-morning-call:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Configurar identidade do git (para o commit automático)
+        run: |
+          git config user.name "Morning Call Bot"
+          git config user.email "actions@github.com"
+
+      - name: Rodar o morning call
+        env:
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
+          FEEDBACK_WEBAPP_URL: ${{ secrets.FEEDBACK_WEBAPP_URL }}
+          SUMMARIZATION_MODE: offline
+        run: python main.py
