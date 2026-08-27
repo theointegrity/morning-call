@@ -2,9 +2,12 @@ name: Morning Call
 
 on:
   schedule:
-    # 07:00 no horário de Brasília (UTC-3) = 10:00 UTC, de segunda a sexta.
-    # O GitHub Actions só entende horário UTC em agendamentos.
-    - cron: '0 10 * * 1-5'
+    # 07:12 no horário de Brasília (UTC-3) = 10:12 UTC, de segunda a sexta.
+    # Evita o minuto "0" (hora cheia) de propósito: agendamentos na hora
+    # cheia competem com uma quantidade enorme de outros workflows no
+    # mundo inteiro, e o GitHub pode atrasar ou até pular o disparo em
+    # dias de congestionamento. O próprio GitHub recomenda evitar isso.
+    - cron: '12 10 * * 1-5'
   workflow_dispatch: # permite rodar manualmente pela aba "Actions" do GitHub, para testes
 
 permissions:
