@@ -2,13 +2,30 @@ name: Morning Call
 
 on:
   schedule:
-    # 07:12 no horário de Brasília (UTC-3) = 10:12 UTC, de segunda a sexta.
-    # Evita o minuto "0" (hora cheia) de propósito: agendamentos na hora
-    # cheia competem com uma quantidade enorme de outros workflows no
-    # mundo inteiro, e o GitHub pode atrasar ou até pular o disparo em
-    # dias de congestionamento. O próprio GitHub recomenda evitar isso.
-    - cron: '12 10 * * 1-5'
+    # O cron do GitHub não tem horário garantido: desde 29/09/2026 os disparos
+    # chegavam com 6 a 9 horas de atraso. Por isso disparamos várias vezes de
+    # madrugada (horários de Brasília, UTC-3), de segunda a sexta:
+    #   01:42 (04:42 UTC), 03:12 (06:12 UTC), 05:12 (08:12 UTC), 07:12 (10:12 UTC)
+    # A primeira execução que chegar espera até 07:00 (main.py, SEND_NOT_BEFORE),
+    # envia e grava a data em state/ultimo_envio.txt; as seguintes veem a
+    # marca e encerram sem reenviar. Evitamos o minuto "0" (hora cheia) de
+    # propósito, que é quando o GitHub fica mais congestionado.
+    - cron: '42 4 * * 1-5'
+    - cron: '12 6,8,10 * * 1-5'
   workflow_dispatch: # permite rodar manualmente pela aba "Actions" do GitHub, para testes
+    inputs:
+      recipients:
+        description: 'Destinatários só desta execução (separados por vírgula). Vazio = lista real (secret RECIPIENTS).'
+        required: false
+        default: ''
+
+# Nunca roda duas execuções oficiais ao mesmo tempo: se uma disparar enquanto
+# outra ainda está rodando (ou esperando dar 07:00), ela fica na fila e, ao
+# começar, vê a marca de envio e encerra. Testes (com destinatários informados)
+# usam outro grupo, para não ficarem presos atrás de uma execução em espera.
+concurrency:
+  group: morning-call-${{ inputs.recipients && 'teste' || 'oficial' }}
+  cancel-in-progress: false
 
 permissions:
   contents: write # necessário para o script conseguir dar `git push` no docs/index.html
@@ -16,6 +33,8 @@ permissions:
 jobs:
   send-morning-call:
     runs-on: ubuntu-latest
+    # A execução da 01:42 pode ficar até ~5h20 esperando dar 07:00.
+    timeout-minutes: 360
     steps:
       - name: Baixar o código do repositório
         uses: actions/checkout@v4
@@ -35,10 +54,12 @@ jobs:
 
       - name: Rodar o morning call
         env:
-          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+          RECIPIENTS: ${{ inputs.recipients || secrets.RECIPIENTS }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           DASHBOARD_PUBLIC_URL: ${{ secrets.DASHBOARD_PUBLIC_URL }}
           FEEDBACK_WEBAPP_URL: ${{ secrets.FEEDBACK_WEBAPP_URL }}
           SUMMARIZATION_MODE: offline
+          # Teste: não espera, não publica o dashboard e não grava a marca de envio.
+          MORNING_CALL_TEST: ${{ inputs.recipients && 'true' || 'false' }}
         run: python main.py
