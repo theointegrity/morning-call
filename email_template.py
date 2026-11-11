@@ -30,6 +30,7 @@ MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
 # O dashboard continua mostrando todos; no e-mail ficam so os principais.
 EMAIL_INDICADORES = [
     ("Ibovespa", "Ibovespa"),
+    ("S&P 500", "S&P 500"),
     ("USD/BRL", "Dólar"),
     ("Selic", "Selic"),
     ("Petróleo (Brent)", "Brent"),
@@ -46,7 +47,7 @@ def _data_extenso(d) -> str:
 def _fmt_valor(label, value):
     if value is None:
         return None
-    if label == "Ibovespa":
+    if label in ("Ibovespa", "S&P 500"):
         return f"{value:,.0f}".replace(",", ".")
     if label == "USD/BRL":
         return f"R$ {value:.2f}".replace(".", ",")
@@ -96,7 +97,7 @@ def _bloco_indicadores(indicadores):
             pct = f"{var:+.2f}%".replace(".", ",")
             var_html = f'<div style="font-size:12px;color:{cor};font-weight:bold;">{seta} {pct}</div>'
         celulas.append(
-            f'<td align="center" valign="top" style="padding:12px 6px;{borda}">'
+            f'<td align="center" valign="top" width="{100 // len(indicadores)}%" style="padding:12px 4px;{borda}">'
             f'<div style="font-size:11px;color:{CINZA};text-transform:uppercase;letter-spacing:1px;">'
             f'{escape(ind["nome"])}</div>'
             f'<div style="font-size:16px;color:{PRETO};font-weight:bold;padding:4px 0 2px;">'
@@ -220,6 +221,7 @@ if __name__ == "__main__":
     }
     fake_market = {
         "Ibovespa": {"value": 128450, "change_pct": 0.84},
+        "S&P 500": {"value": 6812.4, "change_pct": -0.42},
         "USD/BRL": {"value": 5.42, "change_pct": -0.31},
         "Selic": {"value": 15.0, "change_pct": None},
         "Petróleo (Brent)": {"value": 64.2, "change_pct": 1.1},

@@ -30,6 +30,8 @@ def _format_market(market_raw: dict) -> dict:
             display = f"{value:.2f}"
         elif label == "Ibovespa":
             display = f"{value:,.0f}".replace(",", ".")
+        elif label == "S&P 500":
+            display = f"{value:,.0f}".replace(",", ".")
         elif label == "Petróleo (Brent)":
             display = f"US$ {value:.2f}"
         elif label == "Bitcoin (USD)":

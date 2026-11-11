@@ -66,6 +66,7 @@ RSS_FEEDS = [
 MARKET_TICKERS = {
     "USD/BRL": "BRL=X",
     "Ibovespa": "^BVSP",
+    "S&P 500": "^GSPC",
     "Petróleo (Brent)": "BZ=F",
     "Bitcoin (USD)": "BTC-USD",
     "HASH11": "HASH11.SA",
