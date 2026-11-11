@@ -139,7 +139,7 @@ def run(test_run: bool = False):
             log(f"[aviso] publicacao falhou, confira a configuracao do git: {e}")
 
     log("6/6 -> enviando e-mail com o link...")
-    send_morning_call_email(DASHBOARD_PUBLIC_URL)
+    send_morning_call_email(DASHBOARD_PUBLIC_URL, news, market_data)
 
     if not test_run:
         # Se isto falhar, o e-mail ja saiu mas a marca nao: a proxima execucao

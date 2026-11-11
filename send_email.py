@@ -12,15 +12,17 @@ Configuracao necessaria (uma unica vez):
 """
 import smtplib
 import ssl
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from config import RECIPIENTS, SENDER_EMAIL, GMAIL_APP_PASSWORD, DASHBOARD_PUBLIC_URL
+from email_template import montar_email
 
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465  # SSL
 
 
-def send_morning_call_email(dashboard_url: str = None):
+def send_morning_call_email(dashboard_url: str = None, news: dict = None, market_data: dict = None):
     dashboard_url = dashboard_url or DASHBOARD_PUBLIC_URL
     if not dashboard_url:
         raise ValueError("DASHBOARD_PUBLIC_URL nao configurada (ver .env)")
@@ -32,13 +34,12 @@ def send_morning_call_email(dashboard_url: str = None):
             "gere uma senha de app em myaccount.google.com/apppasswords"
         )
 
-    body = (
-        f"Bom dia!\n\n"
-        f"O morning call de hoje ja esta disponivel:\n{dashboard_url}\n\n"
-        f"Bom trabalho!"
-    )
+    # Corpo em HTML (layout Integrity) + versao em texto puro como alternativa
+    html, texto = montar_email(dashboard_url, news, market_data)
+    message = MIMEMultipart("alternative")
+    message.attach(MIMEText(texto, "plain", "utf-8"))
+    message.attach(MIMEText(html, "html", "utf-8"))  # o HTML precisa vir por ultimo
 
-    message = MIMEText(body)
     message["Subject"] = "Morning call — Integrity"
     message["From"] = SENDER_EMAIL
     message["To"] = ", ".join(RECIPIENTS)
